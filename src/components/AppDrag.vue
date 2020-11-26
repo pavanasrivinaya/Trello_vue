@@ -1,19 +1,27 @@
 <template>
-      <div
-        @drop.stop="onDrop"
-        @dragover.prevent
-        @dragenter.prevent
-      >
-        <slot/>
-      </div>
-    </template>
+  <div
+    draggable
+    @dragstart.self="onDrag"
+    @dragover.prevent
+    @dragenter.prevent
+  >
+    <slot/>
+  </div>
+</template>
 
 <script>
 export default {
+  props: {
+    transferData: {
+      type: Object,
+      required: true
+    }
+  },
   methods: {
-    onDrop (e) {
-      const transferData = JSON.parse(e.dataTransfer.getData('payload'))
-      this.$emit('drop', transferData)
+    onDrag (e) {
+      e.dataTransfer.effectAllowed = 'move'
+      e.dataTransfer.dropEffect = 'move'
+      e.dataTransfer.setData('payload', JSON.stringify(this.transferData))
     }
   }
 }
