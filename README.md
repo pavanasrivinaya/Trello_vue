@@ -28,4 +28,4 @@ yarn run lint
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
-https://warm-castle-26959.herokuapp.com/
+https://vigilant-euler-91d32c.netlify.app/
